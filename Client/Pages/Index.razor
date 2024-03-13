@@ -5,3 +5,16 @@
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+APi result: @result
+<button @onclick=click>Clicked @times</button>
+
+@code {
+    string result;
+    int times;
+    void click() => times++;
+    protected override async Task OnInitializedAsync()
+    {
+        var httpClient= new HttpClient();
+        result = await httpClient.GetStringAsync("/api/HttpTrigger1?name=Bryce");
+    }
+}
